@@ -1,0 +1,13 @@
+spawn:
+  world: world
+  x: 500
+  y: 256
+  z: 500
+  yaw: 10
+selector:
+  slot: 5
+visibility:
+  visible:
+    name: '&fPlayers: &aVisible'
+  invisible:
+    name: '&fPlayers: &7Invisible'

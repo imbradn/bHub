@@ -1,0 +1,10 @@
+name: bHub
+version: 1.0.0-SNAPSHOT
+main: io.github.bradnn.bHub
+authors: [Bradn]
+description: A simple to use hub plugin.
+
+commands:
+  hub:
+    description: Main Command.
+    usage: /hub
