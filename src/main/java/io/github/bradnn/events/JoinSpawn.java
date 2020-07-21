@@ -36,6 +36,23 @@ public class JoinSpawn implements Listener {
         player.getInventory().clear();
         if(plugin.getConfig().getBoolean("visibility.enabled") == true) {
             player.getInventory().setItem(plugin.getConfig().getInt("visibility.item slot"), togglePlayers);
+
+        }
+
+        if(plugin.getConfig().getConfigurationSection("ender butt") == null) {
+            plugin.getConfig().set("ender butt.item slot", 5);
+            plugin.getConfig().set("ender butt.name", "&aEnder Butt");
+            plugin.getConfig().set("ender butt.enabled", true);
+            plugin.saveConfig();
+        }
+        if(plugin.getConfig().getBoolean("ender butt.enabled") == true) {
+
+            ItemStack enderButt = new ItemStack(Material.ENDER_PEARL, 64);
+            ItemMeta enderButtMeta = enderButt.getItemMeta();
+            enderButtMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("ender butt.name")));
+            enderButt.setItemMeta(enderButtMeta);
+
+            player.getInventory().setItem(plugin.getConfig().getInt("ender butt.item slot"), enderButt);
         }
     }
 }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="bHub-1.0.0">
+    <output-path>$PROJECT_DIR$/../../Servers/Test Server (1.8.8 Spigot)/plugins</output-path>
+    <root id="archive" name="bHub-1.0.0.jar">
+      <element id="module-output" name="bHub" />
+    </root>
+  </artifact>
+</component>

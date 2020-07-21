@@ -35,6 +35,10 @@ public class PlayerVisibility implements Listener {
             return;
         }
 
+        if(player.getItemInHand().getType() == Material.AIR) {
+            return;
+        }
+
         String visibleColor = plugin.getConfig().getString("visibility.visible.dye color");
         String invisibleColor = plugin.getConfig().getString("visibility.invisible.dye color");
 

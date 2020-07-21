@@ -14,7 +14,7 @@ public class bHub extends JavaPlugin {
         config.options().copyDefaults(true);
         saveConfig();
         getLogger().info("onEnabled is called!");
-        getServer().getPluginManager().registerEvents(new EnderButt(), this);
+        getServer().getPluginManager().registerEvents(new EnderButt(this), this);
         getServer().getPluginManager().registerEvents(new JoinSpawn(this), this);
         getServer().getPluginManager().registerEvents(new DoubleJump(this), this);
         getServer().getPluginManager().registerEvents(new PlayerVisibility(this), this);
