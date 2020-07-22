@@ -1,6 +1,7 @@
 package io.github.bradnn.events;
 
 import io.github.bradnn.bHub;
+import me.clip.placeholderapi.PlaceholderAPI;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
 import org.bukkit.*;
@@ -33,7 +34,11 @@ public class JoinSpawn implements Listener {
         byte limeData = (byte) (15 - lime.getData());
         ItemStack togglePlayers = new ItemStack(Material.INK_SACK, 1, limeData);
         ItemMeta togglePlayersMeta = togglePlayers.getItemMeta();
-        togglePlayersMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("visibility.visible.name")));
+        String togglePlayersName = plugin.getConfig().getString("visibility.visible.name");
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            togglePlayersName = PlaceholderAPI.setPlaceholders(e.getPlayer(), togglePlayersName);
+        }
+        togglePlayersMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', togglePlayersName));
 
         togglePlayers.setItemMeta(togglePlayersMeta);
         player.getInventory().clear();
@@ -52,7 +57,11 @@ public class JoinSpawn implements Listener {
 
             ItemStack enderButt = new ItemStack(Material.ENDER_PEARL, 64);
             ItemMeta enderButtMeta = enderButt.getItemMeta();
-            enderButtMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("ender butt.name")));
+            String enderButtName = plugin.getConfig().getString("ender butt.name");
+            if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                enderButtName = PlaceholderAPI.setPlaceholders(e.getPlayer(), enderButtName);
+            }
+            enderButtMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', enderButtName));
             enderButt.setItemMeta(enderButtMeta);
 
             player.getInventory().setItem(plugin.getConfig().getInt("ender butt.item slot"), enderButt);
@@ -76,12 +85,19 @@ public class JoinSpawn implements Listener {
             plugin.getConfig().set("join title.enabled", true);
             plugin.getConfig().set("join title.title", "&b&lWELCOME");
             plugin.getConfig().set("join title.subtitle", "&f{player}");
+            plugin.saveConfig();
         }
 
         if(plugin.getConfig().getBoolean("join title.enabled") == true) {
             String titleString = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("join title.title"));
+            if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                titleString = PlaceholderAPI.setPlaceholders(e.getPlayer(), titleString);
+            }
             String title = titleString.replace("{player}", player.getDisplayName());
             String subtitleString = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("join title.subtitle"));
+            if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                subtitleString = PlaceholderAPI.setPlaceholders(e.getPlayer(), subtitleString);
+            }
             String subtitle = subtitleString.replace("{player}", player.getDisplayName());
 
             IChatBaseComponent chatTitle = IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + title + "\"}");

@@ -1,6 +1,7 @@
 package io.github.bradnn.events;
 
 import io.github.bradnn.bHub;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -35,6 +36,9 @@ public class JoinMessages implements Listener {
             String playerName = e.getPlayer().getDisplayName();
             String string = joinString.replace("{player}", playerName);
 
+            if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                string = PlaceholderAPI.setPlaceholders(e.getPlayer(), string);
+            }
             e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', string));
         } else {
             return;
@@ -58,6 +62,10 @@ public class JoinMessages implements Listener {
             leaveString.replace("{player}", playerName);
             String string = leaveString.replace("{player}", playerName);
 
+
+            if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                string = PlaceholderAPI.setPlaceholders(e.getPlayer(), string);
+            }
             e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', string));
         } else {
             return;

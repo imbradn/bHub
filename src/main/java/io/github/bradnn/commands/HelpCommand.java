@@ -14,6 +14,7 @@ public class HelpCommand extends SubCommand {
         player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------");
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/hub &fsetspawn &8- &7Sets the spawn to your location."));
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/hub &fspawn &8- &7Sends you to the spawn if any is set."));
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/hub &flaunchpad &8- &7Puts the launchpad in your hand to place."));
         player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------");
 
     }

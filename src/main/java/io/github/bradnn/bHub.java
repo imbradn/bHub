@@ -18,6 +18,7 @@ public class bHub extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
         config.options().copyDefaults(true);
         saveConfig();
         createLaunchpadConfig();

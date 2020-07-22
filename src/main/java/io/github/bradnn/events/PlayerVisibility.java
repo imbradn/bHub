@@ -1,6 +1,7 @@
 package io.github.bradnn.events;
 
 import io.github.bradnn.bHub;
+import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.chat.ClickEvent;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -46,14 +47,22 @@ public class PlayerVisibility implements Listener {
         byte limeData = (byte) (15 - lime.getData());
         ItemStack togglePlayers = new ItemStack(Material.INK_SACK, 1, limeData);
         ItemMeta togglePlayersMeta = togglePlayers.getItemMeta();
-        togglePlayersMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("visibility.visible.name")));
+        String togglePlayersName = plugin.getConfig().getString("visibility.visible.name");
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            togglePlayersName = PlaceholderAPI.setPlaceholders(e.getPlayer(), togglePlayersName);
+        }
+        togglePlayersMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', togglePlayersName));
         togglePlayers.setItemMeta(togglePlayersMeta);
 
         DyeColor gray = DyeColor.valueOf(invisibleColor);
         byte grayData = (byte) (15 - gray.getData());
         ItemStack togglePlayers2 = new ItemStack(Material.INK_SACK, 1, grayData);
         ItemMeta togglePlayersMeta2 = togglePlayers2.getItemMeta();
-        togglePlayersMeta2.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("visibility.invisible.name")));
+        String togglePlayers2Name = plugin.getConfig().getString("visibility.invisible.name");
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            togglePlayers2Name = PlaceholderAPI.setPlaceholders(e.getPlayer(), togglePlayers2Name);
+        }
+        togglePlayersMeta2.setDisplayName(ChatColor.translateAlternateColorCodes('&', togglePlayers2Name));
         togglePlayers2.setItemMeta(togglePlayersMeta2);
 
         if(player.getItemInHand().getItemMeta().equals(togglePlayersMeta)) {

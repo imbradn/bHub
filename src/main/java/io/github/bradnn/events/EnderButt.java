@@ -1,6 +1,7 @@
 package io.github.bradnn.events;
 
 import io.github.bradnn.bHub;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.*;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Item;
@@ -53,7 +54,11 @@ public class EnderButt implements Listener {
 
         ItemStack enderButt = new ItemStack(Material.ENDER_PEARL, 64);
         ItemMeta enderButtMeta = enderButt.getItemMeta();
-        enderButtMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("ender butt.name")));
+        String enderButtName = plugin.getConfig().getString("ender butt.name");
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            enderButtName = PlaceholderAPI.setPlaceholders(e.getPlayer(), enderButtName);
+        }
+        enderButtMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', enderButtName));
         enderButt.setItemMeta(enderButtMeta);
 
         Action action = e.getAction();

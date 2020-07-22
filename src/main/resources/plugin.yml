@@ -4,6 +4,8 @@ main: io.github.bradnn.bHub
 authors: [Bradn]
 description: A simple to use hub plugin.
 
+softdepend: [PlaceholderAPI]
+
 commands:
   hub:
     description: Main Command.
