@@ -1,6 +1,7 @@
 package io.github.bradnn.commands;
 
 import io.github.bradnn.bHub;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class HelpCommand extends SubCommand {
@@ -9,7 +10,11 @@ public class HelpCommand extends SubCommand {
     @Override
     public void onCommand(Player player, String[] args) {
 
-        player.sendMessage("This info is hot");
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&bb&fHub &71.0.0-SNAPSHOT"));
+        player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------");
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/hub &fsetspawn &8- &7Sets the spawn to your location."));
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/hub &fspawn &8- &7Sends you to the spawn if any is set."));
+        player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------");
 
     }
 

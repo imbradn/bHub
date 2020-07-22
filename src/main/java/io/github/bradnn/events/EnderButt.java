@@ -60,6 +60,7 @@ public class EnderButt implements Listener {
         if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
             Player player = e.getPlayer();
             ItemStack itemStack = player.getItemInHand();
+            if(itemStack.getType() == Material.AIR) return;
             if  (itemStack.getItemMeta().equals(enderButtMeta)) {
                 e.setCancelled(true);
 

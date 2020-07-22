@@ -19,6 +19,7 @@ public class bHub extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DoubleJump(this), this);
         getServer().getPluginManager().registerEvents(new PlayerVisibility(this), this);
         getServer().getPluginManager().registerEvents(new NoInventoryUpdate(this), this);
+        getServer().getPluginManager().registerEvents(new JoinMessages(this), this);
         setInstance(this);
         commandManager = new CommandManager();
 
