@@ -24,6 +24,7 @@ public class CommandManager implements CommandExecutor {
     public String help = "help";
     public String spawn = "spawn";
     public String setspawn = "setspawn";
+    public String launchpad = "launchpad";
 
     public void setup(){
         plugin.getCommand(main).setExecutor(this);
@@ -31,6 +32,7 @@ public class CommandManager implements CommandExecutor {
         this.commands.add(new HelpCommand());
         this.commands.add(new SpawnCommand());
         this.commands.add(new SetspawnCommand());
+        this.commands.add(new LaunchpadCommand());
     }
 
     @Override
