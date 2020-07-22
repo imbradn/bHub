@@ -11,3 +11,4 @@ Core command: /hub
 * Join Sounds
 * Join Messages
 * Join Titles
+* Jump Pads
