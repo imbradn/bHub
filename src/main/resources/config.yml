@@ -1,13 +1,53 @@
 spawn:
   world: world
   x: 500
-  y: 256
+  y: 150
   z: 500
   yaw: 10
+checks:
+  no inventory move: true
+  no item drop: true
+  no item pickup: true
 selector:
-  slot: 5
+  name: '&aSelector'
+  size: 54
+  inventory:
+    name: '&aSelector'
+    item: COMPASS
+    slot: 3
+items:
+  '1':
+    item: DIAMOND_BLOCK
+    name: '&a&lServer 1'
+    slot: 0
+    lore:
+      - '&aLine 1'
+      - ' '
+      - '&7example.net'
+    command: 'server server1'
 visibility:
+  enabled: true
+  item slot: 8
   visible:
+    dye color: LIME
     name: '&fPlayers: &aVisible'
   invisible:
+    dye color: GRAY
     name: '&fPlayers: &7Invisible'
+join messages:
+  enabled: true
+  join message: '&7+ &b{player}'
+  leave message: '&7- &b{player}'
+ender butt:
+  enabled: true
+  name: '&aEnder Butt'
+  item slot: 5
+double jump:
+  enabled: true
+join sound:
+  enabled: true
+  sound: LEVEL_UP
+join title:
+  enabled: true
+  title: '&b&lWELCOME'
+  subtitle: '&f{player}'

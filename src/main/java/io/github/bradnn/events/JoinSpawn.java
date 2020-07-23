@@ -112,5 +112,16 @@ public class JoinSpawn implements Listener {
             ((CraftPlayer) player).getHandle().playerConnection.sendPacket(length);
 
         }
+
+        ItemStack selectorItem = new ItemStack(Material.valueOf(plugin.getConfig().getString("selector.inventory.item")), 1);
+        ItemMeta selectorMeta = selectorItem.getItemMeta();
+
+        String selectorName = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("selector.inventory.name"));
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            selectorName = PlaceholderAPI.setPlaceholders(e.getPlayer(), selectorName);
+        }
+        selectorMeta.setDisplayName(selectorName);
+        selectorItem.setItemMeta(selectorMeta);
+        player.getInventory().setItem(plugin.getConfig().getInt("selector.inventory.slot"), selectorItem);
     }
 }
