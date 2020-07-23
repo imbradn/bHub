@@ -1,5 +1,4 @@
-![alt text](https://i.imgur.com/DoMMvyw.png "Header")
-# bHub (Spigot Hub Core)
+![alt text](https://i.imgur.com/DoMMvyw.png "bHub (Spigot Hub Core)")
 
 Core command: /hub
 
