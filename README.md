@@ -12,3 +12,4 @@ Core command: /hub
 * Join Messages
 * Join Titles
 * Jump Pads
+* Custom Tablist
