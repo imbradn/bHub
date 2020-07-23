@@ -74,3 +74,10 @@ join title:
   enabled: true
   title: '&b&lWELCOME'
   subtitle: '&f{player}'
+join motd:
+  enabled: true
+  message:
+    - '&7Thank you for downloading &bbHub&7, &f{player}&7!'
+    - '&b&l* &fhttps://github.com/bradnn'
+    - '&b&l* &fbradn#6668'
+    - '&b&l* &fEdit this message in the config.'

@@ -16,6 +16,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Dye;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.List;
+
 public class JoinSpawn implements Listener {
     bHub plugin;
     public JoinSpawn(bHub instance) {
@@ -125,6 +127,19 @@ public class JoinSpawn implements Listener {
         selectorMeta.setDisplayName(selectorName);
         selectorItem.setItemMeta(selectorMeta);
         player.getInventory().setItem(plugin.getConfig().getInt("selector.inventory.slot"), selectorItem);
+
+        if(plugin.getConfig().getBoolean("join motd.enabled") == true) {
+            List<String> motdBase = plugin.getConfig().getStringList("join motd.message");
+
+            for (int i = 0; i < motdBase.size(); i++) {
+                String motdmsg = ChatColor.translateAlternateColorCodes('&', motdBase.get(i));
+                if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                    motdmsg = PlaceholderAPI.setPlaceholders(e.getPlayer(), motdmsg);
+                }
+                motdmsg = motdmsg.replace("{player}", player.getDisplayName());
+                player.sendMessage(motdmsg);
+            }
+        }
 
 
     }
