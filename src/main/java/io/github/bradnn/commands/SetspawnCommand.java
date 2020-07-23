@@ -10,6 +10,10 @@ public class SetspawnCommand extends SubCommand {
     @Override
     public void onCommand(Player player, String[] args) {
 
+        if(!player.hasPermission("hub.admin")) {
+            return;
+        }
+
         plugin.getConfig().set("spawn.world", player.getLocation().getWorld().getName());
         plugin.getConfig().set("spawn.x", player.getLocation().getX());
         plugin.getConfig().set("spawn.y", player.getLocation().getY());

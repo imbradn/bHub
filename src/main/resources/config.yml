@@ -1,3 +1,18 @@
+###################################################
+#     __        __    __            __            #
+#    |  \      |  \  |  \          |  \           #
+#    | $$____  | $$  | $$ __    __ | $$____       #
+#    | $$    \ | $$__| $$|  \  |  \| $$    \      #
+#    | $$$$$$$\| $$    $$| $$  | $$| $$$$$$$\     #
+#    | $$  | $$| $$$$$$$$| $$  | $$| $$  | $$     #
+#    | $$__/ $$| $$  | $$| $$__/ $$| $$__/ $$     #
+#    | $$    $$| $$  | $$ \$$    $$| $$    $$     #
+#    \$$$$$$$  \$$   \$$  \$$$$$$  \$$$$$$$       #
+#                                                 #
+#           https://github.com/bradnn             #
+#                    Made by:                     #
+#               Braden (bradn#6668)               #
+###################################################
 spawn:
   world: world
   x: 500
@@ -38,6 +53,14 @@ join messages:
   enabled: true
   join message: '&7+ &b{player}'
   leave message: '&7- &b{player}'
+tablist:
+  enabled: true
+  header:
+    - '&b&lbHub'
+    - '&fExample Header'
+  footer:
+    - '&bgithub.com/bradnn'
+    - '&fCheck me out ^^'
 ender butt:
   enabled: true
   name: '&aEnder Butt'

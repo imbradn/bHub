@@ -1,13 +1,23 @@
 package io.github.bradnn;
 import io.github.bradnn.commands.CommandManager;
 import io.github.bradnn.events.*;
+import me.clip.placeholderapi.PlaceholderAPI;
+import net.minecraft.server.v1_8_R3.ChatComponentText;
+import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerListHeaderFooter;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.List;
 
 public class bHub extends JavaPlugin {
     private static bHub instance;
@@ -36,6 +46,46 @@ public class bHub extends JavaPlugin {
         commandManager = new CommandManager();
 
         commandManager.setup();
+
+        if(getConfig().getBoolean("tablist.enabled") == true) {
+
+            PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter();
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    try {
+                        Field a = packet.getClass().getDeclaredField("a");
+                        a.setAccessible(true);
+                        Field b = packet.getClass().getDeclaredField("b");
+                        b.setAccessible(true);
+
+                        List<String> headerList = getConfig().getStringList("tablist.header");
+                        String headerFinal = ChatColor.translateAlternateColorCodes('&', String.join("\n", headerList));
+                        List<String> footerList = getConfig().getStringList("tablist.footer");
+                        String footerFinal = ChatColor.translateAlternateColorCodes('&', String.join("\n", footerList));
+
+                        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                            headerFinal = PlaceholderAPI.setPlaceholders(null, headerFinal);
+                            footerFinal = PlaceholderAPI.setPlaceholders(null, footerFinal);
+                        }
+
+                        Object header = new ChatComponentText(headerFinal);
+
+                        Object footer = new ChatComponentText(footerFinal);
+                        a.set(packet, header);
+                        b.set(packet, footer);
+
+                        if (Bukkit.getOnlinePlayers().size() == 0) return;
+                        for (Player player : Bukkit.getOnlinePlayers()) {
+                            ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+                        }
+
+                    } catch (NoSuchFieldException | IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }.runTaskTimer(this, 0, 20);
+        }
     }
 
     public static bHub getInstance() {
