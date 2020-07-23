@@ -3,7 +3,7 @@
 
 Core command: /hub
 
-## Current Features:
+![alt text](https://i.imgur.com/8dm6Tdu.png "Features")
 * Set spawn
 * Spawn on join
 * Player visibility toggle
