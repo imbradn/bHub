@@ -24,9 +24,9 @@ checks:
   no item drop: true
   no item pickup: true
 selector:
-  name: '&aSelector'
+  name: '&aSelector' # GUI Name
   size: 54
-  inventory:
+  inventory: # The item that appears in your hotbar
     name: '&aSelector'
     item: COMPASS
     slot: 3
@@ -40,7 +40,7 @@ items:
       - ' '
       - '&7example.net'
     command: 'server server1'
-visibility:
+visibility: # Player visibility toggle
   enabled: true
   item slot: 8
   visible:
@@ -49,11 +49,11 @@ visibility:
   invisible:
     dye color: GRAY
     name: '&fPlayers: &7Invisible'
-join messages:
+join messages: # Messages sent when joining the server
   enabled: true
   join message: '&7+ &b{player}'
   leave message: '&7- &b{player}'
-tablist:
+tablist: # The header and footer of the playerlist
   enabled: true
   header:
     - '&b&lbHub'
@@ -61,20 +61,20 @@ tablist:
   footer:
     - '&bgithub.com/bradnn'
     - '&fCheck me out ^^'
-ender butt:
+ender butt: # Throwable enderpearl that you ride
   enabled: true
   name: '&aEnder Butt'
   item slot: 5
-double jump:
+double jump: # Double jump
   enabled: true
-join sound:
+join sound: # Sound played when joining the server
   enabled: true
   sound: LEVEL_UP
-join title:
+join title: # Title send when joining ths erver
   enabled: true
   title: '&b&lWELCOME'
   subtitle: '&f{player}'
-join motd:
+join motd: # Message sent to the player when joining the server
   enabled: true
   message:
     - '&7Thank you for downloading &bbHub&7, &f{player}&7!'
