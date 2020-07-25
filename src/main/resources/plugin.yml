@@ -1,5 +1,5 @@
 name: bHub
-version: 1.0.1-SNAPSHOT
+version: 1.0.2-SNAPSHOT
 main: io.github.bradnn.bHub
 authors: [Bradn]
 description: A simple to use hub plugin.

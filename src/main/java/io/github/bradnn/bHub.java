@@ -42,6 +42,8 @@ public class bHub extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LaunchpadEvents(this), this);
         getServer().getPluginManager().registerEvents(new SelectorChecks(this), this);
         getServer().getPluginManager().registerEvents(new SelectorItem(this), this);
+        getServer().getPluginManager().registerEvents(new WorldChecks(this), this);
+        getServer().getPluginManager().registerEvents(new NoVoid(this), this);
         setInstance(this);
         commandManager = new CommandManager();
 

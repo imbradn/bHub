@@ -23,6 +23,14 @@ checks:
   no inventory move: true
   no item drop: true
   no item pickup: true
+  no block break: true
+  no block place: true
+  no armor stand break: true
+  no item frame break: true
+  no pvp: true
+  no damage: true
+no void:
+  enabled: true
 selector:
   name: '&aSelector' # GUI Name
   size: 54
