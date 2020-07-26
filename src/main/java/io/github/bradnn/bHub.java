@@ -22,6 +22,7 @@ import java.util.List;
 public class bHub extends JavaPlugin {
     private static bHub instance;
     public CommandManager commandManager;
+    public EventManager eventManager;
     final FileConfiguration config = this.getConfig();
     private File launchpadConfigFile;
     private FileConfiguration launchpadConfig;
@@ -33,21 +34,12 @@ public class bHub extends JavaPlugin {
         saveConfig();
         createLaunchpadConfig();
         getLogger().info("onEnabled is called!");
-        getServer().getPluginManager().registerEvents(new EnderButt(this), this);
-        getServer().getPluginManager().registerEvents(new JoinSpawn(this), this);
-        getServer().getPluginManager().registerEvents(new DoubleJump(this), this);
-        getServer().getPluginManager().registerEvents(new PlayerVisibility(this), this);
-        getServer().getPluginManager().registerEvents(new NoInventoryUpdate(this), this);
-        getServer().getPluginManager().registerEvents(new JoinMessages(this), this);
-        getServer().getPluginManager().registerEvents(new LaunchpadEvents(this), this);
-        getServer().getPluginManager().registerEvents(new SelectorChecks(this), this);
-        getServer().getPluginManager().registerEvents(new SelectorItem(this), this);
-        getServer().getPluginManager().registerEvents(new WorldChecks(this), this);
-        getServer().getPluginManager().registerEvents(new NoVoid(this), this);
         setInstance(this);
         commandManager = new CommandManager();
+        eventManager = new EventManager(this);
 
         commandManager.setup();
+        eventManager.load();
 
         if(getConfig().getBoolean("tablist.enabled") == true) {
 
