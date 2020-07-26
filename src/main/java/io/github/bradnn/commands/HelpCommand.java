@@ -10,11 +10,12 @@ public class HelpCommand extends SubCommand {
     @Override
     public void onCommand(Player player, String[] args) {
 
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&bb&fHub &71.0.0-SNAPSHOT"));
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&bb&fHub &71.0.2-SNAPSHOT"));
         player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------");
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/hub &fsetspawn &8- &7Sets the spawn to your location."));
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/hub &fspawn &8- &7Sends you to the spawn if any is set."));
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/hub &flaunchpad &8- &7Puts the launchpad in your hand to place."));
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/hub &fselector &8- &7Opens the selector menu."));
         player.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-----------------------------------");
 
     }
